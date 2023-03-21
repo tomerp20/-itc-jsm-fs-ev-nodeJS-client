@@ -1,19 +1,47 @@
+
+import axios from 'axios';
 import { useState } from 'react'
 import './css/Register.css'
 export const Register = () => {
-        const [name, setName] = useState('');
+        const [username, setUsername] = useState('');
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const handleRegister = () => {
             //Write code that sends the new user information to the server
             //Which means, create new user
             //And when finished, console.log() the new user.
-            // fetch('path',{
-            //     method:'POST',
-            //     body:dfgdf
+            // fetch(`http://localhost:4000/users/registration?apikey=1234`, {
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         username,
+            //         email,
+            //         password
+            //     }),
+            //     headers: {
+            //         ['Content-type'] : 'application/json'
+            //     }
+            // }).then(response => {
+            //     response.json().then(data => {
+            //         console.log({data})
+            //     })
+            // }).catch(error => {
+            //     console.log({
+            //         error
+            //     })
             // })
-            
-
+            axios.post(`http://localhost:4000/users/registration?apikey=1234`,{
+                username,
+                password,
+                email
+            }).then(response => {
+                console.log(
+                    response.data
+                )
+                }).catch(error => {
+                    console.log({
+                        error
+                    })
+                })
 
         }
     return (
@@ -22,7 +50,7 @@ export const Register = () => {
                 <h1>Registration</h1>
             </div>
             <div>
-                <input placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+                <input placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div>
                 <input placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
