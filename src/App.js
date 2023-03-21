@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { tweets } from './components/tweets'
+import { Tweets } from './components/Tweets'
+import { Register } from './components/Register'
+
 function App() {
   return (
     <div className="App">
-      <Tweets />
+      {/* <Tweets /> */}
+      <Register />
     </div>
   );
 }
