@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { getRequest } from '../lib/axios'
 export const Tweets = () => {
 
     const [tweetList, setTweetList] = useState([])
@@ -7,12 +7,9 @@ export const Tweets = () => {
     //write the logic that sends request to the server, gets the tweets list, and show it.
     //Overall, the tweet list should be displayed on the main page of our new app.
     useEffect(() => {
-        fetch('http://localhost:4000/tweets?apikey=1234')
-            .then((response => {
-                response.json().then(data => {
-                    setTweetList(data.data)
-                })
-            }))
+        getRequest('tweets').then((data )=> {
+            setTweetList(data)
+        })
     }, [])
 
     const renderList = () => {
